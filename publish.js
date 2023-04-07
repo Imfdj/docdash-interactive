@@ -83,11 +83,11 @@ function needsSignature(doclet) {
             }
         }
     }
-    // and namespaces that are functions get a signature (but finding them is a		
-    // bit messy)		
-    else if (doclet.kind === 'namespace' && doclet.meta && doclet.meta.code &&		
-        doclet.meta.code.type && doclet.meta.code.type.match(/[Ff]unction/)) {		
-        needsSig = true;		
+    // and namespaces that are functions get a signature (but finding them is a
+    // bit messy)
+    else if (doclet.kind === 'namespace' && doclet.meta && doclet.meta.code &&
+        doclet.meta.code.type && doclet.meta.code.type.match(/[Ff]unction/)) {
+        needsSig = true;
     }
 
     return needsSig;
@@ -459,14 +459,14 @@ function buildNav(members) {
         var ret = "";
         if (members.globals.length) {
             var globalNav = '';
-    
+
             members.globals.forEach(function(g) {
                 if ( (docdash.typedefs || g.kind !== 'typedef') && !hasOwnProp.call(seen, g.longname) ) {
                     globalNav += '<li>' + linkto(g.longname, g.name) + '</li>';
                 }
                 seen[g.longname] = true;
             });
-    
+
             if (!globalNav) {
                 // turn the heading into a link so you can actually get to the global page
                 ret += '<h3>' + linkto('global', 'Global') + '</h3>';
@@ -577,7 +577,8 @@ exports.publish = function(taffyData, opts, tutorials) {
 
                 return {
                     caption: caption || '',
-                    code: code || example || ''
+                    code: code || example || '',
+                    interactive: doclet.interactive || false
                 };
             });
         }
@@ -626,7 +627,7 @@ exports.publish = function(taffyData, opts, tutorials) {
             outdir = path.join.apply(null, subdirs);
         }
     }
-    
+
     fs.mkPath(outdir);
 
     // copy the template's static files to outdir

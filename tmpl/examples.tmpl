@@ -8,6 +8,17 @@
         <p class="code-caption"><?js= example.caption ?></p>
     <?js } ?>
     <pre class="prettyprint"><code><?js= self.htmlsafe(example.code) ?></code></pre>
+    <?js
+       if (example.interactive) {
+       ?>
+         <iframe
+           data-code="<?js= self.htmlsafe(example.code) ?>"
+           width="980"
+           height="425"
+           frameborder="0"
+           src="./interactive/index.html"
+           ></iframe>
+    <?js } ?>
 <?js
     });
 ?>
